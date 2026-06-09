@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sania Maqbool — Economist & Researcher</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose:       #E8567A;
+      --blush:      #F2A7BB;
+      --petal:      #FAD9E3;
+      --cream:      #FFF5F8;
+      --deep:       #2C1A22;
+      --mid:        #5C3A47;
+      --light:      #9E6B7D;
+      --white:      #FFFFFF;
+      --grad: linear-gradient(135deg, #E8567A 0%, #C2385A 100%);
+      --shadow: 0 8px 32px rgba(232,86,122,0.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--deep);
+      overflow-x: hidden;
+    }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--cream); }
+    ::-webkit-scrollbar-thumb { background: var(--blush); border-radius: 3px; }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 999;
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px;
+      background: rgba(255,245,248,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(232,86,122,0.12);
+      transition: box-shadow .3s;
+    }
+    nav.scrolled { box-shadow: 0 4px 24px rgba(232,86,122,0.12); }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--rose);
+      letter-spacing: -.5px;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--deep); }
+
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 500;
+      color: var(--mid);
+      position: relative;
+      padding-bottom: 3px;
+      transition: color .25s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--rose);
+      border-radius: 2px;
+      transition: width .3s ease;
+    }
+    .nav-links a:hover { color: var(--rose); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--grad);
+      color: var(--white) !important;
+      padding: .5rem 1.25rem;
+      border-radius: 50px;
+      font-weight: 600 !important;
+      transition: opacity .25s, transform .2s !important;
+    }
+    .nav-cta:hover { opacity: .9; transform: translateY(-1px); }
+    .nav-cta::after { display: none !important; }
+
+    .hamburger {
+      display: none;
+      flex-direction: column; gap: 5px; cursor: pointer;
+      background: none; border: none; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--rose); border-radius: 2px;
+      transition: transform .3s, opacity .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed; top: 70px; left: 0; right: 0;
+      background: rgba(255,245,248,0.97);
+      backdrop-filter: blur(14px);
+      padding: 1.5rem 5% 2rem;
+      flex-direction: column; gap: 1.25rem;
+      border-bottom: 1px solid var(--petal);
+      z-index: 998;
+      animation: slideDown .3s ease;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none; font-size: 1rem; font-weight: 500;
+      color: var(--mid);
+      padding: .5rem 0;
+      border-bottom: 1px solid var(--petal);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 100px 5% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(242,167,187,.35) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-bg-circle.c1 { width: 600px; height: 600px; top: -150px; right: -150px; animation: float1 8s ease-in-out infinite; }
+    .hero-bg-circle.c2 { width: 350px; height: 350px; bottom: -80px; left: -80px; animation: float2 10s ease-in-out infinite; }
+
+    @keyframes float1 {
+      0%,100% { transform: translate(0,0); }
+      50%      { transform: translate(-20px, 20px); }
+    }
+    @keyframes float2 {
+      0%,100% { transform: translate(0,0); }
+      50%      { transform: translate(15px,-15px); }
+    }
+
+    .hero-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 4rem; width: 100%; max-width: 1200px; margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+
+    .hero-text { max-width: 560px; }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--petal);
+      color: var(--rose);
+      font-size: .8rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .4rem 1rem; border-radius: 50px;
+      margin-bottom: 1.5rem;
+      animation: fadeUp .7s ease both;
+    }
+    .hero-eyebrow .dot { width: 7px; height: 7px; background: var(--rose); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.4; } }
+
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      line-height: 1.15;
+      color: var(--deep);
+      margin-bottom: 1rem;
+      animation: fadeUp .7s .1s ease both;
+    }
+    .hero-text h1 em {
+      font-style: italic;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-text .subtitle {
+      font-size: 1.05rem; color: var(--light); line-height: 1.7;
+      margin-bottom: 2rem;
+      animation: fadeUp .7s .2s ease both;
+    }
+    .hero-buttons {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp .7s .3s ease both;
+    }
+    .btn-primary {
+      background: var(--grad);
+      color: var(--white);
+      padding: .85rem 2rem;
+      border-radius: 50px;
+      font-weight: 600; font-size: .95rem;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(232,86,122,0.35);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(232,86,122,.45); }
+    .btn-outline {
+      border: 2px solid var(--rose);
+      color: var(--rose);
+      padding: .85rem 2rem;
+      border-radius: 50px;
+      font-weight: 600; font-size: .95rem;
+      text-decoration: none;
+      transition: background .2s, color .2s, transform .2s;
+    }
+    .btn-outline:hover { background: var(--rose); color: var(--white); transform: translateY(-3px); }
+
+    .hero-stats {
+      display: flex; gap: 2rem; margin-top: 2.5rem; flex-wrap: wrap;
+      animation: fadeUp .7s .4s ease both;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat .num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem; font-weight: 700;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-stat .lbl { font-size: .75rem; color: var(--light); font-weight: 500; text-transform: uppercase; letter-spacing: .06em; }
+
+    .hero-image-wrap {
+      flex-shrink: 0;
+      position: relative;
+      animation: fadeLeft .9s .3s ease both;
+    }
+    .hero-avatar {
+      width: 320px; height: 380px;
+      border-radius: 40% 60% 60% 40% / 50% 50% 60% 40%;
+      background: linear-gradient(145deg, var(--petal), var(--blush));
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      box-shadow: 0 20px 60px rgba(232,86,122,.25);
+      animation: morph 8s ease-in-out infinite;
+    }
+    @keyframes morph {
+      0%,100% { border-radius: 40% 60% 60% 40% / 50% 50% 60% 40%; }
+      33%      { border-radius: 60% 40% 50% 60% / 40% 60% 50% 50%; }
+      66%      { border-radius: 50% 60% 40% 50% / 60% 40% 60% 50%; }
+    }
+    .avatar-initials {
+      font-family: 'Playfair Display', serif;
+      font-size: 4.5rem; font-weight: 700;
+      color: var(--rose);
+      opacity: .5;
+      user-select: none;
+    }
+    .hero-badge {
+      position: absolute; bottom: 20px; right: -20px;
+      background: var(--white);
+      border-radius: 16px;
+      padding: .75rem 1.1rem;
+      box-shadow: var(--shadow);
+      display: flex; align-items: center; gap: .6rem;
+      font-size: .82rem; font-weight: 600; color: var(--deep);
+      animation: floatBadge 4s ease-in-out infinite;
+    }
+    .hero-badge .icon { font-size: 1.3rem; }
+    @keyframes floatBadge {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-8px); }
+    }
+    .hero-badge2 {
+      position: absolute; top: 20px; left: -30px;
+      background: var(--white);
+      border-radius: 50px;
+      padding: .6rem 1rem;
+      box-shadow: var(--shadow);
+      font-size: .8rem; font-weight: 600; color: var(--rose);
+      animation: floatBadge 5s ease-in-out infinite .5s;
+    }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: 90px 5%; }
+    .section-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--rose);
+      margin-bottom: .6rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--deep);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-title em { font-style: italic; color: var(--rose); }
+    .section-subtitle {
+      font-size: 1rem; color: var(--light); line-height: 1.7;
+      max-width: 540px;
+    }
+    .section-header { margin-bottom: 3.5rem; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeLeft {
+      from { opacity: 0; transform: translateX(32px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── ABOUT ── */
+    #about { background: var(--white); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1.4fr;
+      gap: 5rem; align-items: center;
+      max-width: 1100px; margin: 0 auto;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-card-bg {
+      width: 100%;
+      aspect-ratio: 3/4;
+      border-radius: 24px;
+      background: linear-gradient(160deg, var(--petal) 0%, var(--blush) 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .about-card-bg .big-initial {
+      font-family: 'Playfair Display', serif;
+      font-size: 9rem; font-weight: 700;
+      color: var(--rose); opacity: .18;
+      line-height: 1;
+    }
+    .about-fact {
+      position: absolute; background: var(--white);
+      border-radius: 14px; padding: .9rem 1.2rem;
+      box-shadow: var(--shadow);
+      font-size: .82rem; font-weight: 600;
+      color: var(--deep);
+    }
+    .about-fact.f1 { top: 24px; right: -28px; }
+    .about-fact.f2 { bottom: 32px; left: -28px; }
+    .about-fact .af-label { color: var(--light); font-weight: 400; font-size: .72rem; display: block; margin-bottom: 2px; }
+    .about-fact .af-val { color: var(--rose); font-size: 1rem; font-weight: 700; }
+
+    .about-content {}
+    .about-content p {
+      font-size: 1rem; color: var(--mid); line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+    .about-pills {
+      display: flex; flex-wrap: wrap; gap: .6rem;
+      margin-top: 1.8rem;
+    }
+    .pill {
+      background: var(--petal);
+      color: var(--rose);
+      padding: .4rem 1rem;
+      border-radius: 50px;
+      font-size: .82rem; font-weight: 600;
+      transition: background .2s, transform .2s;
+    }
+    .pill:hover { background: var(--rose); color: var(--white); transform: translateY(-2px); }
+
+    /* ── EDUCATION ── */
+    #education { background: var(--cream); }
+    .edu-timeline { max-width: 800px; margin: 0 auto; position: relative; }
+    .edu-timeline::before {
+      content: '';
+      position: absolute; left: 22px; top: 0; bottom: 0;
+      width: 2px; background: var(--petal);
+    }
+    .edu-item {
+      display: flex; gap: 2rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+    .edu-dot {
+      flex-shrink: 0;
+      width: 46px; height: 46px;
+      background: var(--grad);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 16px rgba(232,86,122,.3);
+      position: relative; z-index: 1;
+    }
+    .edu-card {
+      flex: 1;
+      background: var(--white);
+      border-radius: 20px;
+      padding: 1.6rem 1.8rem;
+      box-shadow: 0 4px 24px rgba(232,86,122,.08);
+      border: 1px solid rgba(232,86,122,.08);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .edu-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .edu-year {
+      font-size: .75rem; font-weight: 700; color: var(--rose);
+      text-transform: uppercase; letter-spacing: .08em;
+      margin-bottom: .3rem;
+    }
+    .edu-degree {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--deep); margin-bottom: .3rem;
+    }
+    .edu-inst {
+      font-size: .9rem; color: var(--light); margin-bottom: .8rem;
+    }
+    .edu-desc {
+      font-size: .88rem; color: var(--mid); line-height: 1.7;
+    }
+    .edu-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .8rem; }
+    .edu-tag {
+      font-size: .72rem; font-weight: 600; color: var(--rose);
+      background: var(--petal); padding: .25rem .7rem;
+      border-radius: 50px;
+    }
+
+    /* ── SKILLS ── */
+    #skills { background: var(--white); }
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem; max-width: 1100px; margin: 0 auto;
+    }
+    .skill-card {
+      background: var(--cream);
+      border-radius: 20px; padding: 1.8rem;
+      border: 1px solid rgba(232,86,122,.1);
+      transition: transform .3s, box-shadow .3s, background .3s;
+    }
+    .skill-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); background: var(--white); }
+    .skill-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .skill-name { font-weight: 700; color: var(--deep); margin-bottom: .3rem; font-size: .95rem; }
+    .skill-desc { font-size: .82rem; color: var(--light); line-height: 1.6; margin-bottom: 1rem; }
+    .skill-bar-wrap { background: var(--petal); border-radius: 50px; height: 6px; overflow: hidden; }
+    .skill-bar { height: 6px; border-radius: 50px; background: var(--grad); width: 0; transition: width 1.2s ease; }
+
+    /* ── RESEARCH / PROJECTS ── */
+    #research { background: var(--cream); }
+    .research-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem; max-width: 1100px; margin: 0 auto;
+    }
+    .research-card {
+      background: var(--white);
+      border-radius: 22px; padding: 2rem;
+      border: 1px solid rgba(232,86,122,.1);
+      transition: transform .3s, box-shadow .3s;
+      display: flex; flex-direction: column;
+    }
+    .research-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .rc-type {
+      font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--rose); margin-bottom: .8rem;
+    }
+    .rc-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; color: var(--deep);
+      margin-bottom: .8rem; line-height: 1.4;
+    }
+    .rc-desc { font-size: .85rem; color: var(--light); line-height: 1.7; flex: 1; }
+    .rc-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.2rem; }
+    .rc-tag {
+      font-size: .7rem; font-weight: 600; color: var(--mid);
+      background: var(--petal); padding: .2rem .65rem; border-radius: 50px;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--deep); color: var(--white); }
+    #contact .section-label { color: var(--blush); }
+    #contact .section-title { color: var(--white); }
+    #contact .section-subtitle { color: rgba(255,255,255,.55); }
+
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.2fr;
+      gap: 4rem; max-width: 1100px; margin: 0 auto;
+      align-items: start;
+    }
+    .contact-info-items { display: flex; flex-direction: column; gap: 1.2rem; margin-top: 1.5rem; }
+    .ci-item {
+      display: flex; align-items: flex-start; gap: 1rem;
+      background: rgba(255,255,255,.06);
+      border-radius: 14px; padding: 1rem 1.2rem;
+      transition: background .2s;
+    }
+    .ci-item:hover { background: rgba(255,255,255,.1); }
+    .ci-icon {
+      width: 42px; height: 42px;
+      background: rgba(232,86,122,.2);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .ci-label { font-size: .72rem; color: rgba(255,255,255,.45); font-weight: 500; margin-bottom: .2rem; }
+    .ci-val { font-size: .92rem; color: var(--white); font-weight: 500; }
+
+    .contact-form {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 24px;
+      padding: 2.5rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: .4rem; }
+    .form-group label { font-size: .78rem; font-weight: 600; color: rgba(255,255,255,.6); letter-spacing: .05em; text-transform: uppercase; }
+    .form-group input,
+    .form-group textarea {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 10px;
+      padding: .85rem 1rem;
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      font-size: .92rem;
+      outline: none;
+      transition: border .25s, background .25s;
+      resize: vertical;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,.28); }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--rose);
+      background: rgba(232,86,122,.08);
+    }
+    .form-group textarea { min-height: 120px; }
+    .form-submit { margin-top: 1rem; }
+    .form-submit button {
+      width: 100%;
+      background: var(--grad);
+      color: var(--white);
+      border: none;
+      border-radius: 10px;
+      padding: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .95rem; font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(232,86,122,.35);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .form-submit button:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(232,86,122,.5); }
+    .form-msg { margin-top: .8rem; text-align: center; font-size: .85rem; color: var(--blush); min-height: 1.2em; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1a0e15;
+      padding: 2rem 5%;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+    }
+    footer .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; color: var(--blush);
+      font-weight: 700;
+    }
+    footer p {
+      font-size: .78rem; color: rgba(255,255,255,.3);
+    }
+    .social-links { display: flex; gap: .8rem; }
+    .social-links a {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,.07);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; font-size: .9rem;
+      transition: background .2s, transform .2s;
+    }
+    .social-links a:hover { background: var(--rose); transform: translateY(-3px); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner { flex-direction: column; text-align: center; }
+      .hero-buttons { justify-content: center; }
+      .hero-stats { justify-content: center; }
+      .hero-image-wrap { order: -1; }
+      .hero-avatar { width: 240px; height: 280px; }
+      .hero-badge2 { left: -10px; }
+      .hero-badge { right: -10px; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-card-bg { max-height: 280px; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-form { padding: 1.5rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a class="nav-logo" href="#home">Sania<span> Maqbool</span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="closeMobile()">Home</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#education" onclick="closeMobile()">Education</a>
+  <a href="#skills" onclick="closeMobile()">Skills</a>
+  <a href="#research" onclick="closeMobile()">Research</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg-circle c1"></div>
+  <div class="hero-bg-circle c2"></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-eyebrow">
+        <span class="dot"></span>
+        Available for Opportunities
+      </div>
+      <h1>Hello, I'm <em>Sania</em><br/>Maqbool</h1>
+      <p class="subtitle">
+        An Integrated Economics Graduate passionate about data-driven research, policy analysis, and uncovering the patterns that shape economies and lives.
+      </p>
+      <div class="hero-buttons">
+        <a href="#research" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-outline">Let's Connect</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">5</div>
+          <div class="lbl">Year Program</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">3+</div>
+          <div class="lbl">Research Papers</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">∞</div>
+          <div class="lbl">Curiosity</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <div class="hero-badge2">🎓 Economist</div>
+      <div class="hero-avatar">
+        <span class="avatar-initials">SM</span>
+      </div>
+      <div class="hero-badge">
+        <span class="icon">📊</span>
+        <span>Economics & Research</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual reveal">
+      <div class="about-card-bg">
+        <span class="big-initial">SM</span>
+      </div>
+      <div class="about-fact f1">
+        <span class="af-label">Degree</span>
+        <span class="af-val">Integrated M.A.</span>
+      </div>
+      <div class="about-fact f2">
+        <span class="af-label">Specialization</span>
+        <span class="af-val">Economics</span>
+      </div>
+    </div>
+    <div class="about-content reveal">
+      <div class="section-header">
+        <div class="section-label">About Me</div>
+        <h2 class="section-title">Bridging Theory &amp; <em>Real-World</em> Impact</h2>
+      </div>
+      <p>
+        I am Sania Maqbool, a graduate of a 5-year Integrated M.A. in Economics program. My journey through economics has been shaped by a deep curiosity about how markets, institutions, and policies interact to shape human well-being.
+      </p>
+      <p>
+        From microeconomic theory to macroeconomic policy analysis, I've built a comprehensive toolkit that allows me to approach complex economic questions with both rigor and creativity. I am particularly drawn to development economics, behavioral economics, and the use of quantitative methods to evaluate policy interventions.
+      </p>
+      <p>
+        Outside academia, I enjoy translating economic insights into accessible narratives — because good economics should speak to everyone.
+      </p>
+      <div class="about-pills">
+        <span class="pill">Policy Analysis</span>
+        <span class="pill">Econometrics</span>
+        <span class="pill">Development Economics</span>
+        <span class="pill">Data Research</span>
+        <span class="pill">Behavioral Economics</span>
+        <span class="pill">Academic Writing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-header reveal" style="max-width:1100px;margin:0 auto 3.5rem;">
+    <div class="section-label">Academic Journey</div>
+    <h2 class="section-title">Education & <em>Qualifications</em></h2>
+    <p class="section-subtitle">A five-year deep dive into the science and art of economics, from first principles to advanced research methods.</p>
+  </div>
+  <div class="edu-timeline">
+    <div class="edu-item reveal">
+      <div class="edu-dot">🎓</div>
+      <div class="edu-card">
+        <div class="edu-year">2019 — 2024</div>
+        <div class="edu-degree">Integrated M.A. in Economics (5-Year Program)</div>
+        <div class="edu-inst">University / College of Higher Education</div>
+        <div class="edu-desc">Completed a rigorous five-year integrated program encompassing undergraduate and postgraduate economics in a single continuum. Studied microeconomics, macroeconomics, econometrics, international trade, development economics, public policy, and advanced research methodology.</div>
+        <div class="edu-tags">
+          <span class="edu-tag">Econometrics</span>
+          <span class="edu-tag">Macroeconomic Policy</span>
+          <span class="edu-tag">Development Theory</span>
+          <span class="edu-tag">Thesis Research</span>
+        </div>
+      </div>
+    </div>
+    <div class="edu-item reveal">
+      <div class="edu-dot">📖</div>
+      <div class="edu-card">
+        <div class="edu-year">Core Curriculum</div>
+        <div class="edu-degree">Foundations of Economics — Years 1 & 2</div>
+        <div class="edu-inst">Integrated Program — Phase I</div>
+        <div class="edu-desc">Built strong foundations in microeconomic theory, macroeconomics, mathematics for economics, statistics, and introductory econometrics. Developed analytical and quantitative reasoning skills central to economic thinking.</div>
+        <div class="edu-tags">
+          <span class="edu-tag">Microeconomics</span>
+          <span class="edu-tag">Mathematics</span>
+          <span class="edu-tag">Statistics</span>
+          <span class="edu-tag">Economic History</span>
+        </div>
+      </div>
+    </div>
+    <div class="edu-item reveal">
+      <div class="edu-dot">🔬</div>
+      <div class="edu-card">
+        <div class="edu-year">Advanced Studies</div>
+        <div class="edu-degree">Research & Specialization — Years 3–5</div>
+        <div class="edu-inst">Integrated Program — Phase II</div>
+        <div class="edu-desc">Advanced into specializations including international economics, public finance, labor economics, and behavioral economics. Conducted original thesis research applying quantitative methods to policy-relevant economic questions.</div>
+        <div class="edu-tags">
+          <span class="edu-tag">Public Finance</span>
+          <span class="edu-tag">Labour Economics</span>
+          <span class="edu-tag">International Trade</span>
+          <span class="edu-tag">Dissertation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header reveal" style="max-width:1100px;margin:0 auto 3.5rem;">
+    <div class="section-label">Competencies</div>
+    <h2 class="section-title">Skills & <em>Expertise</em></h2>
+    <p class="section-subtitle">A blend of analytical rigor, quantitative tools, and communication skills developed over five years of intensive study.</p>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">Econometrics & Data Analysis</div>
+      <div class="skill-desc">Regression analysis, time-series, panel data models, and statistical inference applied to economic problems.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" data-width="88"></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">📝</div>
+      <div class="skill-name">Economic Research & Writing</div>
+      <div class="skill-desc">Academic paper writing, literature review, research design, and communicating complex ideas clearly.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" data-width="90"></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🏛️</div>
+      <div class="skill-name">Public Policy Analysis</div>
+      <div class="skill-desc">Evaluating fiscal, monetary, and development policies through theoretical and empirical frameworks.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" data-width="82"></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🌏</div>
+      <div class="skill-name">Development Economics</div>
+      <div class="skill-desc">Poverty, inequality, human development, and the economics of developing nations and emerging markets.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" data-width="85"></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🧠</div>
+      <div class="skill-name">Behavioral Economics</div>
+      <div class="skill-desc">Understanding how psychology and cognitive biases influence economic decisions and market outcomes.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" data-width="78"></div></div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">💻</div>
+      <div class="skill-name">Statistical Tools (R / SPSS)</div>
+      <div class="skill-desc">Proficient in quantitative software for data cleaning, visualization, and econometric modelling.</div>
+      <div class="skill-bar-wrap"><div class="skill-bar" data-width="75"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-header reveal" style="max-width:1100px;margin:0 auto 3.5rem;">
+    <div class="section-label">Portfolio</div>
+    <h2 class="section-title">Research & <em>Projects</em></h2>
+    <p class="section-subtitle">Selected academic work and research projects spanning policy evaluation, development theory, and quantitative analysis.</p>
+  </div>
+  <div class="research-grid">
+    <div class="research-card reveal">
+      <div class="rc-type">📄 Thesis Research</div>
+      <div class="rc-title">Impact of Microfinance on Women's Economic Empowerment in Rural Economies</div>
+      <div class="rc-desc">An empirical study examining how access to microfinance institutions influences income levels, household decision-making power, and livelihood outcomes for women in rural settings, using primary and secondary data sources.</div>
+      <div class="rc-tags"><span class="rc-tag">Development Economics</span><span class="rc-tag">Gender & Finance</span><span class="rc-tag">Econometrics</span></div>
+    </div>
+    <div class="research-card reveal">
+      <div class="rc-type">📊 Policy Paper</div>
+      <div class="rc-title">Fiscal Policy Effectiveness During Economic Downturns — A Comparative Analysis</div>
+      <div class="rc-desc">Analyzed government expenditure multipliers across selected developing economies during periods of recession, comparing Keynesian predictions with observed macroeconomic data, drawing policy lessons for fiscal stimulus design.</div>
+      <div class="rc-tags"><span class="rc-tag">Macroeconomics</span><span class="rc-tag">Fiscal Policy</span><span class="rc-tag">Comparative Study</span></div>
+    </div>
+    <div class="research-card reveal">
+      <div class="rc-type">🔬 Research Paper</div>
+      <div class="rc-title">Behavioral Nudges & Savings Behavior: Experimental Evidence</div>
+      <div class="rc-desc">Explored how behavioral interventions — default enrollment, framing, and commitment devices — can improve household savings rates among low-income populations, drawing on experimental economics literature.</div>
+      <div class="rc-tags"><span class="rc-tag">Behavioral Economics</span><span class="rc-tag">Household Finance</span><span class="rc-tag">Field Experiments</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="reveal">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Let's Start a <em>Conversation</em></h2>
+      <p class="section-subtitle" style="margin-bottom:0;">Open to research collaborations, academic opportunities, policy roles, and interesting conversations about economics.</p>
+      <div class="contact-info-items">
+        <div class="ci-item">
+          <div class="ci-icon">📧</div>
+          <div>
+            <div class="ci-label">Email</div>
+            <div class="ci-val">sania.maqbool@email.com</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">📍</div>
+          <div>
+            <div class="ci-label">Location</div>
+            <div class="ci-val">India</div>
+          </div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-icon">🎓</div>
+          <div>
+            <div class="ci-label">Qualification</div>
+            <div class="ci-val">Integrated M.A. Economics</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" placeholder="Your first name" id="fname" />
+        </div>
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Your last name" id="lname" />
+        </div>
+      </div>
+      <div class="form-group" style="margin-bottom:1rem;">
+        <label>Email</label>
+        <input type="email" placeholder="your@email.com" id="femail" />
+      </div>
+      <div class="form-group" style="margin-bottom:1rem;">
+        <label>Subject</label>
+        <input type="text" placeholder="Research collaboration, opportunity…" id="fsubject" />
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea placeholder="Tell me about your project or opportunity…" id="fmessage"></textarea>
+      </div>
+      <div class="form-submit">
+        <button onclick="submitForm()">Send Message ✦</button>
+      </div>
+      <div class="form-msg" id="formMsg"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo">Sania Maqbool</div>
+  <p>© 2024 Sania Maqbool · Economist & Researcher</p>
+  <div class="social-links">
+    <a href="#" title="LinkedIn">💼</a>
+    <a href="#" title="Email">✉️</a>
+    <a href="#" title="Research">📄</a>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  // Hamburger
+  const ham = document.getElementById('hamburger');
+  const mob = document.getElementById('mobileMenu');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('open');
+    mob.classList.toggle('open');
+  });
+  function closeMobile() {
+    ham.classList.remove('open');
+    mob.classList.remove('open');
+  }
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Skill bars
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const bar = e.target.querySelector('.skill-bar');
+        if (bar) bar.style.width = bar.dataset.width + '%';
+        barObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.skill-card').forEach(c => barObserver.observe(c));
+
+  // Contact form
+  function submitForm() {
+    const msg = document.getElementById('formMsg');
+    const fname = document.getElementById('fname').value.trim();
+    const femail = document.getElementById('femail').value.trim();
+    if (!fname || !femail) {
+      msg.textContent = '⚠️ Please fill in your name and email.';
+      msg.style.color = '#F2A7BB';
+      return;
+    }
+    msg.textContent = '✓ Thank you! Sania will get back to you soon.';
+    msg.style.color = '#FAD9E3';
+    ['fname','lname','femail','fsubject','fmessage'].forEach(id => document.getElementById(id).value = '');
+  }
+</script>
+</body>
+</html>
